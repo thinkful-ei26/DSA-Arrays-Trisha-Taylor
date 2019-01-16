@@ -54,6 +54,22 @@ class Array {
     memory.free(oldPtr);
     this._capacity = size;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) {
+      throw new Error('Index error');
+    }
+    return memory.get(this.ptr + index);
+  }
+
+  pop() {
+    if (this.length === 0) {
+      throw new Error('Index error');
+    }
+    const value = memory.get(this.ptr + this.length - 1);
+    this.length--;
+    return value;
+  }
 }
 
 //add an item to the array
@@ -61,22 +77,25 @@ function main() {
   Array.SIZE_RATIO = 3;
 
   let arr = new Array();
-  arr.push(3); // Array { length: 1, ptr: 0 }
-  arr.push(5);
-  arr.push(15);
-  arr.push(19); // pointer changing to relocate the new array 
-  arr.push(45);
-  arr.push(10); // Array { length: 6, ptr: 15 }
-  arr.push(10);
-  arr.push(10);
-  arr.push(10);
-  arr.push(10);
-  arr.push(10);
-  arr.push(10);
-  arr.push(10);
-  console.log(arr);
+  // arr.push(3); // Array { length: 1, ptr: 0 }
+  // arr.push(5);
+  // arr.push(15);
+  // arr.push(19); // pointer changing to relocate the new array 
+  // arr.push(45);
+  // arr.push(10); // Array { length: 6, ptr: 15 }
+  // arr.push(10);
+  // arr.push(10);
+  // arr.pop();
+  // arr.pop();
+  // arr.pop();
+  arr.push(3); // value prints b/c its a #
+  arr.push('taylor'); // NaN b/c it's a string
+  console.log(arr.get(1));
+  // console.log(arr());
+  // console.log(arr[3]); // how to print first value
 }
 
-console.log(main());
+// console.log(Array().arr);
+main();
 
 module.exports = Array;
