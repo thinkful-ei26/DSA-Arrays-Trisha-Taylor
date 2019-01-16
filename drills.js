@@ -210,3 +210,5 @@ const rotation = (str1, str2) => {
 // subs1 = mazon 
 // str3 = subs1 + subs2   === mazona
 console.log(rotation('amazon','azonma'));
+
+console.log(rotation('amazon','azonam'));
