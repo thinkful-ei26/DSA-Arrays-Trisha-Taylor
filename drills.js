@@ -191,7 +191,7 @@ const rotation = (str1, str2) => {
   // if(str2 === subs){
   //   return true;
   // }
-
+  const validateArray = []; 
   for(let i =0; i < str1.length; i++){
     subs1 = str1.substring(0,i);
     const subs2 = str1.substring(i, str1.length +1);
@@ -199,10 +199,14 @@ const rotation = (str1, str2) => {
     // console.log(subs1,'subs1');
     // console.log(subs2);
     console.log(subs3);
+    validateArray.push(subs3); 
   }
-  return false;
+  if(validateArray.includes(str2)){
+    return true; 
+  }
+  return false; 
 };
 // subs2= a 
 // subs1 = mazon 
 // str3 = subs1 + subs2   === mazona
-rotation('amazon','azonam');
+console.log(rotation('amazon','azonma'));
