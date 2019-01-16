@@ -101,46 +101,108 @@
 //Input:[1, 3, 9, 4]
 //Output:[108, 36, 12, 27]
 
-const products = arr => {
-  const results = [];
+// const products = arr => {
+//   const results = [];
 
-  const sorted = arr.sort();
-  for(let i =0; i < sorted.length; i++){
-    for(let j=1; j < sorted.length-2; j++){
-      let result = sorted[i]*(sorted[j] * sorted[j+1]) * sorted[j+2]; 
+//   const sorted = arr.sort();
+//   for(let i =0; i < sorted.length; i++){
+//     for(let j=1; j < sorted.length-2; j++){
+//       let result = sorted[i]*(sorted[j] * sorted[j+1]) * sorted[j+2]; 
       
-      // console.log(result); 
-      results.push(result); 
+//       // console.log(result); 
+//       results.push(result); 
 
-    }
-  }
-  return results;
-};
+//     }
+//   }
+//   return results;
+// };
 
-console.log(products([1, 3, 9, 4]));
+// console.log(products([1, 3, 9, 4]));
 
-const _products = arr => {
-  const results = [];
-  const sorted = arr.sort();
-  for(let i =0; i < sorted.length; i++){
-    let product = 1;
-    for(let j=0; j< sorted.length; j++){
-      if(i!==j){
-        product *= sorted[j];
-      }
-    }
-    results.push(product);
-  }
-  return results;
-};
+// const _products = arr => {
+//   const results = [];
+//   const sorted = arr.sort();
+//   for(let i =0; i < sorted.length; i++){
+//     let product = 1;
+//     for(let j=0; j< sorted.length; j++){
+//       if(i!==j){
+//         product *= sorted[j];
+//       }
+//     }
+//     results.push(product);
+//   }
+//   return results;
+// };
 
-console.log('from _products:',_products([1, 3, 9, 4]));
+// console.log('from _products:',_products([1, 3, 9, 4]));
 
 
 /* ==== 2D array ==== */
+// Input:
+// [
+//   [1,0,1,1,0],
+//   [0,1,1,1,0],
+//   [1,1,1,1,1],
+//   [1,0,1,1,1],
+//   [1,1,1,1,1]
+// ];
+// Output:
+// [
+//   [0,0,0,0,0],
+//   [0,0,0,0,0],
+//   [0,0,1,1,0],
+//   [0,0,0,0,0],
+//   [0,0,1,1,0]
+// ];
 
+// const twoDArray = arr => {
+//   let result = [];
+//   for(let i=0; i<arr.length; i++){
+//     const currentArr = arr[i];
+//     if(currentArr.includes(0)){
+//       result.push(new Array(currentArr.length).fill(0));
+//     } else {
+//       // arr[2]
+//       result.push(currentArr); 
+//     }
+//   }
+//   return result;
+// };
 
-
-
+// console.log(twoDArray([[1,0,1,1,0],
+//   [0,1,1,1,0],
+//   [1,1,1,1,1],
+//   [1,0,1,1,1],
+//   [1,1,1,1,1]])
+// );
 
 /* ==== String rotation ==== */
+//Input: amazon, azonam
+//Output: true
+
+const rotation = (str1, str2) => {
+  if(str1.length !== str2.length){
+    return false;
+  }
+  //concat or substring?
+  let subs1 = str1;
+  // console.log(str1.substring(1) + subs[0]);
+  // subs = str1.substring(1) + subs[0];
+  // if(str2 === subs){
+  //   return true;
+  // }
+
+  for(let i =0; i < str1.length; i++){
+    subs1 = str1.substring(0,i);
+    const subs2 = str1.substring(i, str1.length +1);
+    const subs3 = subs2 + subs1;
+    // console.log(subs1,'subs1');
+    // console.log(subs2);
+    console.log(subs3);
+  }
+  return false;
+};
+// subs2= a 
+// subs1 = mazon 
+// str3 = subs1 + subs2   === mazona
+rotation('amazon','azonam');
